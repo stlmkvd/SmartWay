@@ -12,5 +12,35 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "SmartWay"
 include ':app'
+
+//def includeProject(file) {
+//    if (file.name.startsWith('.')) return
+//    include(":${file.name}")
+//    project(":${file.name}").projectDir = file
+//}
+//
+def sourcesDir = new File("sources")
+//
+//for (modulesDir in sourcesDir.listFiles()) {
+//    modulesDir.listFiles().each { file ->
+//        if (file.name.startsWith('.')) return
+//        include(":${file.name}")
+//        project(":${file.name}").projectDir = file
+//    }
+//}
+
+sourcesDir.listFiles().stream()
+        .flatMap { moduleDir ->
+            moduleDir.listFiles()
+        }
+//        .forEach { module ->
+////            include(":${file.name}")
+////            project(":${file.name}").projectDir = file
+//        }
+
+
+
+

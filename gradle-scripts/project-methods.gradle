@@ -1,0 +1,50 @@
+ext.applyAndroidLibrary = { project ->
+    project.with {
+        apply plugin: 'com.android.library'
+        apply plugin: 'org.jetbrains.kotlin.android'
+
+        android {
+            namespace "com.stlmkvd.smartway.${project.name.replace(/-/, '')}"
+            compileSdk build_versions.compile_sdk
+
+            defaultConfig {
+                minSdk build_versions.min_sdk
+                targetSdk build_versions.target_sdk
+            }
+            buildFeatures {
+                viewBinding true
+            }
+        }
+    }
+}
+ext.applyDagger = { project ->
+    project.with {
+        apply plugin: 'kotlin-kapt'
+
+        dependencies {
+            implementation deps.dagger.dagger
+            kapt deps.dagger.dagger_compiler
+        }
+    }
+}
+
+ext.applyCompose = { project ->
+    project.with {
+        android {
+            buildFeatures {
+                compose true
+            }
+            composeOptions {
+                kotlinCompilerExtensionVersion '1.4.6'
+            }
+
+        }
+
+        dependencies {
+            implementation platform(deps.compose_bom.bom)
+            implementation deps.compose
+            implementation deps.activity_compose
+            debugImplementation deps.compose_debug
+        }
+    }
+}

@@ -1,0 +1,4 @@
+def app_version = [:]
+app_version.version_code = 1
+app_version.version_name = "1.0"
+ext.app_version = app_version

@@ -1,0 +1,66 @@
+def versions = [:]
+versions.core = '1.10.1'
+versions.appcompat = '1.5.1'
+versions.dagger = '2.44'
+versions.retrofit = '2.9.0'
+versions.gson = '2.9.1'
+versions.okhttp = '4.10.0'
+versions.fragment = '1.5.7'
+versions.compose_bom = '2022.10.00'
+versions.activity_compose = '1.7.2'
+
+
+def deps = [:]
+
+def core = [:]
+core.core_ktx = "androidx.core:core-ktx:${versions.core}"
+deps.core = core
+
+def dagger = [:]
+dagger.dagger = "com.google.dagger:dagger:${versions.dagger}"
+dagger.dagger_compiler = "com.google.dagger:dagger-compiler:${versions.dagger}"
+deps.dagger = dagger
+
+def retrofit = [:]
+retrofit.retrofit = "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+retrofit.converter_gson = "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+deps.retrofit = retrofit
+
+def gson = [:]
+gson.gson = "com.google.code.gson:gson:${versions.gson}"
+deps.gson = gson
+
+def okhttp = [:]
+okhttp.okhttp = "com.squareup.okhttp3:okhttp:${versions.okhttp}"
+okhttp.logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}"
+deps.okhttp = okhttp
+
+def fragment = [:]
+fragment.fragment_ktx = "androidx.fragment:fragment-ktx:${versions.fragment}"
+deps.fragment = fragment
+
+def kotlinx = [:]
+kotlinx.kotlinx_coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinx}"
+deps.kotlinx = kotlinx
+
+def compose_bom = [:]
+compose_bom.bom = "androidx.compose:compose-bom:${versions.compose_bom}"
+deps.compose_bom = compose_bom
+
+def compose = [:]
+compose.ui = 'androidx.compose.ui:ui'
+compose.ui_graphics = 'androidx.compose.ui:ui-graphics'
+compose.tooling_preview = 'androidx.compose.ui:ui-tooling-preview'
+compose.material = 'androidx.compose.material3:material3'
+deps.compose = compose
+
+def activity_compose = [:]
+activity_compose.activity_compose = "androidx.activity:activity-compose:${versions.activity_compose}"
+deps.activity_compose = activity_compose
+
+def compose_debug = [:]
+compose_debug.ui_tooling = 'androidx.compose.ui:ui-tooling'
+compose_debug.test_manifest = 'androidx.compose.ui:ui-test-manifest'
+deps.compose_debug = compose_debug
+
+ext.deps = deps
