@@ -17,9 +17,11 @@ rootProject.name = "SmartWay"
 include ':app'
 
 def sourcesDir = new File("sources")
-sourcesDir.listFiles().stream()
-        .flatMap(File::listFiles)
-
-
-
-
+for (file in sourcesDir.listFiles()) {
+    for (module in file.listFiles()) {
+        if (!module.listFiles().any { it.name == "build.gradle" }) return
+        def name = ":${module.name}"
+        include name
+        project(name).projectDir = module
+    }
+}
