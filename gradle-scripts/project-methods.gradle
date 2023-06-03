@@ -40,11 +40,10 @@ ext.applyCompose = { project ->
 
         }
 
-        dependencies {
+        dependencies { handler ->
             implementation platform(deps.compose_bom.bom)
-            implementation deps.compose
-            implementation deps.activity_compose
-            debugImplementation deps.compose_debug
+            implementation((deps.compose + deps.activity_compose).values())
+            debugImplementation(deps.compose_debug.values())
         }
     }
 }

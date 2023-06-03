@@ -59,14 +59,4 @@ android {
         }
     }
 }
-
-//def implementProject(handler, file) {
-//    if (file.name.startsWith('.')) return
-//    if (file.listFiles().any { it.name.contains('build.gradle') }) {
-//        handler.implementation project(":Smartway:${file.name}")
-//    }
-//}
-//
-//dependencies {
-//    implementProject(it, new File("${rootDir}/sources/selebrity/network"))
-//}
+applyCompose(this)
