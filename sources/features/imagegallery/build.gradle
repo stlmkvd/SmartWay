@@ -1,0 +1,6 @@
+applyAndroidLibrary(this)
+applyDagger(this)
+
+dependencies {
+    implementation project(':network')
+}

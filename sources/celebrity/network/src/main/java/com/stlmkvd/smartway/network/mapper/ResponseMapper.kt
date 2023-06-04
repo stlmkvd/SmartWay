@@ -1,7 +1,7 @@
 package com.stlmkvd.smartway.network.mapper
 
 import com.google.gson.Gson
-import com.stlmkvd.smartway.network.model.response.ErrorResponse
+import com.stlmkvd.smartway.network.model.ErrorResponse
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton

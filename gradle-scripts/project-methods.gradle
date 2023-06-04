@@ -20,6 +20,10 @@ ext.applyAndroidLibrary = { project ->
                 jvmTarget = '17'
             }
         }
+
+        dependencies {
+            implementation deps.core.values()
+        }
     }
 }
 ext.applyDagger = { project ->
