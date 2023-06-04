@@ -11,8 +11,13 @@ ext.applyAndroidLibrary = { project ->
                 minSdk build_versions.min_sdk
                 targetSdk build_versions.target_sdk
             }
-            buildFeatures {
-                viewBinding true
+
+            compileOptions {
+                sourceCompatibility JavaVersion.VERSION_17
+                targetCompatibility JavaVersion.VERSION_17
+            }
+            kotlinOptions {
+                jvmTarget = '17'
             }
         }
     }
@@ -35,7 +40,7 @@ ext.applyCompose = { project ->
                 compose true
             }
             composeOptions {
-                kotlinCompilerExtensionVersion '1.4.6'
+                kotlinCompilerExtensionVersion '1.4.4'
             }
 
         }
