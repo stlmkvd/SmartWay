@@ -1,5 +1,6 @@
 package com.stlmkvd.smartway.network.calladapters
 
+import com.stlmkvd.smartway.network.di.NetworkComponent
 import com.stlmkvd.smartway.network.mapper.ResponseMapper
 import retrofit2.Call
 import retrofit2.CallAdapter
@@ -10,9 +11,15 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 internal class ResultCallAdapter(
-    private val resultType: Type,
-    private val responseMapper: ResponseMapper
+    private val resultType: Type
 ) : CallAdapter<Type, Call<Result<Type>>> {
+
+    @Inject
+    lateinit var responseMapper: ResponseMapper
+
+    init {
+        NetworkComponent.INSTANCE.inject(this)
+    }
 
     override fun responseType(): Type = resultType
 
@@ -22,9 +29,7 @@ internal class ResultCallAdapter(
 
     @Singleton
     class Factory
-    @Inject internal constructor(
-        private val responseMapper: ResponseMapper
-    ) : CallAdapter.Factory() {
+    @Inject internal constructor() : CallAdapter.Factory() {
 
         override fun get(
             returnType: Type,
@@ -41,7 +46,7 @@ internal class ResultCallAdapter(
             }
 
             val resultType = getParameterUpperBound(0, callType as ParameterizedType)
-            return ResultCallAdapter(resultType, responseMapper)
+            return ResultCallAdapter(resultType)
         }
     }
 }

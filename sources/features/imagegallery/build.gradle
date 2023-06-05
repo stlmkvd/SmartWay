@@ -2,5 +2,7 @@ applyAndroidLibrary(this)
 applyDagger(this)
 
 dependencies {
+    implementation project(':app')
     implementation project(':network')
+    implementation project(':core')
 }
