@@ -5,7 +5,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-internal class ApiErrorMapper
+class ApiErrorMapper
 @Inject constructor(){
 
     fun map(errorStr: String): ApiError {

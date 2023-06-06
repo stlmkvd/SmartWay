@@ -9,7 +9,7 @@ private const val AUTH_PARAMETER = "Authorization"
 private const val ACCESS_TOKEN = "Client-ID DTJCh0JZJ3e5iz0iqmrSkHth49rALyiBtyUPge3RPR8"
 
 @Singleton
-internal class AuthInterceptor
+class AuthInterceptor
 @Inject constructor() : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {

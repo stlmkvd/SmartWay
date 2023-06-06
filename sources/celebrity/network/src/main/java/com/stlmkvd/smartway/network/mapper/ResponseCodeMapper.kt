@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-internal class ResponseCodeMapper
+class ResponseCodeMapper
 @Inject constructor() {
 
     fun mapToException(httpCode: Int, errors: List<ApiError>? = null): ApiException {

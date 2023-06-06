@@ -1,0 +1,9 @@
+applyAndroidLibrary(this)
+applyDagger(this)
+applyCompose(this)
+
+dependencies {
+
+    compileOnly project(':core')
+    api project(':network')
+}

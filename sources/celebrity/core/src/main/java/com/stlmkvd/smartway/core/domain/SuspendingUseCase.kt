@@ -1,4 +1,4 @@
-package com.stlmkvd.smartway.imagegallery.domain.usecase
+package com.stlmkvd.smartway.core.domain
 
 interface SuspendingUseCase<I, O> {
 

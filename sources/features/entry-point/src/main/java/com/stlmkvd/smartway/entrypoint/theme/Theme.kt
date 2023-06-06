@@ -1,4 +1,4 @@
-package com.stlmkvd.smartway.ui.theme
+package com.stlmkvd.smartway.entrypoint.theme
 
 import android.app.Activity
 import android.os.Build

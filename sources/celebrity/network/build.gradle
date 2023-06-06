@@ -2,5 +2,5 @@ applyAndroidLibrary(this)
 applyDagger(this)
 
 dependencies {
-    implementation((deps.core + deps.retrofit + deps.okhttp).values())
+    api((deps.core + deps.retrofit + deps.okhttp).values())
 }

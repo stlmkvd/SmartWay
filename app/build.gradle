@@ -61,8 +61,23 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+}
 
-    dependencies {
-        implementation project(':core')
+def implementProject(handler, file) {
+    if (file.name.startsWith('.')) return
+    if (file.listFiles().any { it.name.contains('build.gradle') }) {
+        handler.implementation project(":${file.name}")
+    }
+}
+
+dependencies {
+    for (file in new File("${rootDir}/sources/celebrity").listFiles()) {
+        implementProject(it, file)
+    }
+    for (file in new File("${rootDir}/sources/features").listFiles()) {
+        implementProject(it, file)
+    }
+    for (file in new File("${rootDir}/sources/base").listFiles()) {
+        implementProject(it, file)
     }
 }

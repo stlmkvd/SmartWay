@@ -1,0 +1,10 @@
+applyAndroidLibrary(this)
+applyDagger(this)
+applyCompose(this)
+
+dependencies {
+
+    implementation project(':core')
+    implementation project(':app-api')
+    implementation project(':image-gallery-api')
+}

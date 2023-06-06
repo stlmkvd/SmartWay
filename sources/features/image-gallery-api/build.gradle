@@ -1,0 +1,7 @@
+applyAndroidLibrary(this)
+applyDagger(this)
+applyCompose(this)
+dependencies {
+
+    implementation project(':core')
+}

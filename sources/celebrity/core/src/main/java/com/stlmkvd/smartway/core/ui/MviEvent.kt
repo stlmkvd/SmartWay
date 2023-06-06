@@ -1,3 +1,3 @@
 package com.stlmkvd.smartway.core.ui
 
-interface Action
+interface MviEvent

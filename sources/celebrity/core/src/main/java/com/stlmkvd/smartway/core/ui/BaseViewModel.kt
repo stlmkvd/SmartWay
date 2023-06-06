@@ -14,14 +14,14 @@ import kotlinx.coroutines.launch
 
 @OptIn(FlowPreview::class)
 abstract class BaseViewModel<
-    I : UiIntent,
-    S : UiState,
-    A : Action
+    E : MviEvent,
+    S : MviState,
+    A : MviAction
     >(
     private val initState: S
 ) : ViewModel() {
 
-    protected abstract fun processUiIntent(uiIntent: I): Flow<A>
+    protected abstract fun processUiIntent(uiIntent: E): Flow<A>
 
     protected abstract fun reduceState(state: S, action: A): S
 
@@ -34,7 +34,7 @@ abstract class BaseViewModel<
         .scan(initState, ::reduceState)
         .stateIn(viewModelScope, SharingStarted.Eagerly, initState)
 
-    fun acceptUiIntent(uiIntent: I) {
+    fun acceptUiIntent(uiIntent: E) {
         viewModelScope.launch {
             actions.emitAll(processUiIntent(uiIntent))
         }

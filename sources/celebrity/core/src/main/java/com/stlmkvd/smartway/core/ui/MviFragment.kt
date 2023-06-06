@@ -6,17 +6,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 
-abstract class BaseFragment<
-    I : UiIntent,
-    S : UiState,
+abstract class MviFragment<
+    I : MviEvent,
+    S : MviState,
     VM : BaseViewModel<I, S, *>
     > : Fragment() {
+
+    abstract fun injectSelf()
 
     abstract fun provideViewModelClass(): Class<VM>
 
     abstract fun render(uiState: S)
-
-    abstract fun injectSelf()
 
     @Inject
     protected lateinit var vmFactory: MultiViewModelFactory

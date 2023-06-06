@@ -1,9 +1,9 @@
 package com.stlmkvd.smartway.imagegallery.domain.entity
 
-import java.net.URL
-import java.util.UUID
+import androidx.compose.runtime.Immutable
 
+@Immutable
 data class Photo(
-    val id: UUID,
-    val url: URL
+    val id: String,
+    val url: String
 )

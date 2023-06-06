@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-internal class ResponseMapper
+class ResponseMapper
 @Inject constructor(
     private val gson: Gson,
     private val errorsMapper: ApiErrorMapper,

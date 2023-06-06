@@ -1,4 +1,4 @@
-package com.stlmkvd.smartway.ui.theme
+package com.stlmkvd.smartway.entrypoint.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

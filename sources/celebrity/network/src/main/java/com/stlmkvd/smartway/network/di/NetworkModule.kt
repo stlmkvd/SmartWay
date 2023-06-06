@@ -15,24 +15,26 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 import kotlin.coroutines.CoroutineContext
 
 private const val BASE_URL = "https://api.unsplash.com/"
-private const val ACCESS_KEY = "DTJCh0JZJ3e5iz0iqmrSkHth49rALyiBtyUPge3RPR8"
+private const val ACCESS_KEY = "kSZN0jzrxX8_GdnCzO7fSdb2Yh-6Mv84RJFh01hXUmM"
 
 @Module
 object NetworkModule {
 
     @Provides
     @Singleton
-    internal fun provideBaseUrl(): HttpUrl {
+    fun provideBaseUrl(): HttpUrl {
         return BASE_URL.toHttpUrl()
     }
 
     @Provides
     @Singleton
-    internal fun provideOkHttpClient(
+    @Named("main")
+    fun provideOkHttpClient(
         authInterceptor: AuthInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
@@ -43,8 +45,9 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    internal fun provideRetrofit(
+    fun provideRetrofit(
         baseUrl: HttpUrl,
+        @Named("main")
         client: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory,
         adapterFactory: ResultCallAdapter.Factory
@@ -59,7 +62,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    internal fun provideApi(
+    fun provideApi(
         retrofit: Retrofit
     ): UnisplashApi {
         return retrofit.create(UnisplashApi::class.java)
@@ -67,13 +70,13 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    internal fun provideGson(): Gson {
+    fun provideGson(): Gson {
         return GsonBuilder().create()
     }
 
     @Provides
     @Singleton
-    internal fun provideGsonConverterFactory(
+    fun provideGsonConverterFactory(
         gson: Gson,
     ): GsonConverterFactory {
         return GsonConverterFactory.create(gson)
@@ -81,7 +84,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    internal fun provideCoroutineContext(): CoroutineContext {
+    fun provideCoroutineContext(): CoroutineContext {
         return (Dispatchers.IO + SupervisorJob())
     }
 }
